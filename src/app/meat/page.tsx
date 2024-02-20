@@ -1,30 +1,27 @@
 "use client"
 import * as React from 'react';
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./../page.module.css";
+import { Button } from '@mui/material';
 
-export default function Home() {
+export default function Meat() {
   const categories = [
-    { label: 'Breakfast', text: 'Breakfast is the first meal of a day.' },
-    { label: 'Starter', text: 'Is a dish served before the main course of a meal' },
-    { label: 'Pasta', text: 'Pasta is a staple food of traditional Italian cuisine' },
-    { label: 'Seafood', text: 'Seafood is any form of sea life regarded as food by humans.' },
-    { label: 'Meat', text: 'Meat is valued as a complete protein food containing all the amino acids necessary for the human body.' },
-    { label: 'Side', text: 'Side dishes such as salad, potatoes and bread are commonly used with main courses.' },
-    { label: 'Vegetarian', text: 'Vegetarianism is the practice of abstaining from the consumption of meat.' },
-    { label: 'Dessert', text: 'Dessert is a course that concludes a meal.' },
+    { label: 'Beef', text: '' },
+    { label: 'Chicken', text: '' },
+    { label: 'Lamb', text: '' },
+    { label: 'Pork', text: '' }
   ]
 
   const CategoryList = () => {
+    let path = '/meat/meatCategory/'
     let elements = []
     let i: number
     let lng = categories.length
     for (i = 0; i < lng; ++i) {
-      let route = categories[i].label === 'Meat' ? '/meat/' : '/category/' + categories[i].label
       let element = (
         <a
           key={i}
-          href={route}
+          href={path + categories[i].label}
           className={styles.card}
           rel="noopener noreferrer"
         >
@@ -37,7 +34,6 @@ export default function Home() {
         </a>)
       elements.push(element)
     }
-
     return (
       <div className={styles.grid}>
         {elements}
@@ -56,6 +52,7 @@ export default function Home() {
           priority
         />
       </div>
+      <Button variant="outlined"><a href='/'>Go Back</a></Button>
       {CategoryList()}
     </main>
   );
