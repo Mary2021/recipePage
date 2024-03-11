@@ -1,0 +1,26 @@
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 3rem 0;
+}
+
+.paper {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    position: relative; 
+    padding: 2rem 2rem;
+    width: 20%;
+}
+
+.image {
+    position: relative;
+    border-radius: 25px;
+}
+
+
+.bulletColor {
+    color: hsl(14, 45%, 36%);
+}

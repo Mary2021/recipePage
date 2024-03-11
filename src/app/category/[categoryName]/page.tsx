@@ -3,57 +3,35 @@ import * as React from 'react';
 import { useState, useEffect } from 'react'
 import Image from "next/image";
 import styles from "./../../page.module.css";
+import { young_serif } from '../../styles/fonts'
 import { Button } from '@mui/material';
 
-export default function Category({ params }: { params: { slug: string } }) {
+export default function Category({ params }: { params: { categoryName: string } }) {
   const [meals, setMeals] = useState({})
   const [isLoading, setLoading] = useState(true)
-  //const [categories, setCategories] = useState({})
-
-  // //fetch meals and categories
-  // useEffect(() => {
-  //   const request1 = fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.slug}`).then((res) => res.json());
-  //   const request2 = fetch(`https://www.themealdb.com/api/json/v1/1/categories.php`).then((res) => res.json());
-  //   Promise.all([request1, request2])
-  //     .then(([meals, categories]) => {
-  //       setMeals(meals)
-  //       setCategories(categories)
-  //       setLoading(false)
-  //     })
-  // }, [])
 
   useEffect(() => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.slug}`)
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?c=${params.categoryName}`)
       .then((res) => res.json())
       .then((meals) => {
         setMeals(meals)
+        console.log(meals)
         setLoading(false)
       })
   }, [])
-
 
   if (isLoading) return <p>Loading...</p>
   if (!meals) return <p>No profile data</p>
   
   const CategoryThumb = () => {
-    if (params.slug != 'Meat') {
-      let path = 'https://www.themealdb.com/images/category/' + params.slug + '.png'
+    if (params.categoryName != 'Meat') {
+      let path = 'https://www.themealdb.com/images/category/' + params.categoryName + '.png'
       return (<Image
         className={styles.logo}
         src={path}
         alt="Fresh vegetables"
-        width={450}
-        height={250}
-        priority
-      />)
-    } else {
-      let path = '/meat.jpeg'
-      return (<Image
-        className={styles.logo}
-        src={path}
-        alt="Fresh vegetables"
-        width={550}
-        height={350}
+        width={350}
+        height={200}
         priority
       />)
     }
@@ -75,12 +53,11 @@ export default function Category({ params }: { params: { slug: string } }) {
       for (i = 0; i < lng; ++i) {
         obj3 = Object.values(key1 || {})[i]
         val = obj3['strMeal']
-        let link = '/meal/' + params.slug
-        let element = <div key={i}><a href={link}><li >{val}</li></a></div>
+        let link = '/category/' + params.categoryName + '/meal/' + val.replace(/ /g,'_')
+        let element = <div key={i}><a href={link}><li>{val}</li></a></div>
         elements.push(element)
       }
     }
-
     return (
       <div>
         <ol>
@@ -88,15 +65,14 @@ export default function Category({ params }: { params: { slug: string } }) {
         </ol>
       </div>)
   }
-  //console.log(meals)
   return (
     <main className={styles.main}>
       <div className={styles.center}>
         {CategoryThumb()}
       </div>
-      <Button variant="outlined"><a href='/'>Go Back</a></Button>
-      <h1>{params.slug}</h1>
+      <h1 className={young_serif.className}>{params.categoryName}</h1>
       {MealsList()}
+      <Button variant="outlined"><a href='/'>Go Back</a></Button>
     </main>
   )
 }

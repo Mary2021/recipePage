@@ -2,18 +2,19 @@
 import * as React from 'react';
 import Image from "next/image";
 import styles from "./../page.module.css";
+import { young_serif } from './../styles/fonts'
 import { Button } from '@mui/material';
 
 export default function Meat() {
   const categories = [
-    { label: 'Beef', text: '' },
-    { label: 'Chicken', text: '' },
-    { label: 'Lamb', text: '' },
-    { label: 'Pork', text: '' }
+    { label: 'Beef', text: 'Beef is the culinary name for meat from cattle.' },
+    { label: 'Chicken', text: 'Chicken is a type of domesticated fowl, a subspecies of the red junglefowl.' },
+    { label: 'Lamb', text: 'Lamb, hogget, and mutton are the meat of domestic sheep (species Ovis aries) at different ages.' },
+    { label: 'Pork', text: 'Pork is the culinary name for meat from a domestic pig (Sus scrofa domesticus).' }
   ]
 
   const CategoryList = () => {
-    let path = '/meat/meatCategory/'
+    let path = '/meat/category/'
     let elements = []
     let i: number
     let lng = categories.length
@@ -25,8 +26,8 @@ export default function Meat() {
           className={styles.card}
           rel="noopener noreferrer"
         >
-          <h2>
-            {categories[i].label} <span>-&gt;</span>
+          <h2 className={young_serif.className}>
+            {categories[i].label}
           </h2>
           <p>
             {categories[i].text}
@@ -45,15 +46,15 @@ export default function Meat() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src="/cookbook.jpg"
+          src="/assets/images/meat.jpeg"
           alt="Fresh vegetables"
-          width={550}
-          height={350}
+          width={350}
+          height={200}
           priority
         />
       </div>
-      <Button variant="outlined"><a href='/'>Go Back</a></Button>
       {CategoryList()}
+      <Button variant="outlined"><a href='/'>Go Back</a></Button>
     </main>
   );
 }

@@ -2,6 +2,7 @@
 import * as React from 'react';
 import Image from "next/image";
 import styles from "./page.module.css";
+import { young_serif } from './styles/fonts'
 
 export default function Home() {
   const categories = [
@@ -28,8 +29,8 @@ export default function Home() {
           className={styles.card}
           rel="noopener noreferrer"
         >
-          <h2>
-            {categories[i].label} <span>-&gt;</span>
+          <h2 className={young_serif.className}>
+            {categories[i].label}
           </h2>
           <p>
             {categories[i].text}
@@ -49,10 +50,10 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.logo}
-          src="/cookbook.jpg"
+          src="/assets/images/cookbook.jpg"
           alt="Fresh vegetables"
-          width={550}
-          height={350}
+          width={350}
+          height={200}
           priority
         />
       </div>
