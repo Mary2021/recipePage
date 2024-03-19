@@ -46,10 +46,10 @@ export default function Home() {
     )
   }
   return (
-    <main className={styles.main}>
+    <main>
       <div className={styles.center}>
         <Image
-          className={styles.logo}
+          className={styles.image}
           src="/assets/images/cookbook.jpg"
           alt="Fresh vegetables"
           width={350}

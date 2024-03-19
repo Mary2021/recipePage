@@ -3,9 +3,9 @@ import * as React from 'react';
 import { useState, useEffect } from 'react'
 import styles from "./meal.module.css";
 import { Outfit } from "next/font/google";
+import { young_serif } from './../../../../styles/fonts'
 import { Button, Box, Paper, Divider, Grid, List, ListItem, ListItemIcon } from '@mui/material';
 import { Circle } from '@mui/icons-material';
-import { young_serif } from './../../../../styles/fonts'
 
 const outfit = Outfit({ subsets: ["latin"] });
 
@@ -19,7 +19,6 @@ export default function Meal({ params }: { params: { categoryName: string, mealN
       .then((res) => res.json())
       .then((meals) => {
         setMeals(meals)
-        console.log(meals)
         setLoading(false)
       })
   }, [])
@@ -75,7 +74,7 @@ export default function Meal({ params }: { params: { categoryName: string, mealN
             src={mealThumb}
             alt={params.mealName}
             width={'100%'}
-            height={'25%'}
+            height={'250rem'}
           ></img>
           <h1 className={young_serif.className}>{params.mealName}</h1>
           <h2 className={young_serif.className} style={{color: 'hsl(14, 45%, 36%)'}}>Ingredients</h2>
@@ -88,8 +87,10 @@ export default function Meal({ params }: { params: { categoryName: string, mealN
           </Grid>
           <Divider />
           <h2 className={young_serif.className} style={{color: 'hsl(14, 45%, 36%)'}}>Instructions</h2>
-          <p className={outfit.className} style={{textAlign: 'justify'}}>{instructions}</p>
-          <Button variant="outlined"><a href={link}>Go back</a></Button>
+          <p className={outfit.className} style={{textAlign: 'justify', paddingTop: '0.5rem', paddingBottom: '1rem'}}>{instructions}</p>
+          <div className={styles.bntCenter}>
+          <Button variant="outlined"><a href={link} className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go back</a></Button>
+          </div>
         </Paper>
       </Box>
     );

@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react'
 import Image from "next/image";
-import styles from "./../../../page.module.css";
+import styles from "./../../../meat/category/[categoryName]/meal/[mealName]/meal.module.css"
 import { young_serif } from './../../../styles/fonts'
 import { Button } from '@mui/material';
 
@@ -19,14 +19,13 @@ export default function MeatCategory({ params }: { params: { categoryName: strin
       })
   }, [])
 
-
   if (isLoading) return <p>Loading...</p>
   if (!meals) return <p>No profile data</p>
   
   const CategoryThumb = () => {
       let path = '/meat.jpeg'
       return (<Image
-        className={styles.logo}
+        className={styles.image}
         src={path}
         alt="Fresh vegetables"
         width={350}
@@ -52,27 +51,25 @@ export default function MeatCategory({ params }: { params: { categoryName: strin
         obj3 = Object.values(key1 || {})[i]
         val = obj3['strMeal']
         let link = '/meat/category/' + params.categoryName + '/meal/' + val.replace(/ /g,'_')
-        let element = <div key={i}><a href={link}><li >{val}</li></a></div>
+        let element = <div key={i} className={styles.listElementPadding}><a href={link}><li >{val}</li></a></div>
         elements.push(element)
       }
     }
-
     return (
       <div>
-        <ol>
+        <ol className={styles.listPadding}>
           {elements}
         </ol>
       </div>)
   }
-  console.log(meals)
   return (
-    <main className={styles.main}>
+    <main>
       <div className={styles.center}>
         {CategoryThumb()}
       </div>
       <h1 className={young_serif.className}>{params.categoryName}</h1>
       {MealsList()}
-      <Button variant="outlined"><a href='/meat/'>Go Back</a></Button>
+      <Button variant="outlined"><a href='/meat/' className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go Back</a></Button>
     </main>
   )
 }

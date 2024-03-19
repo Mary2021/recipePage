@@ -42,10 +42,10 @@ export default function Meat() {
     )
   }
   return (
-    <main className={styles.main}>
+    <main>
       <div className={styles.center}>
         <Image
-          className={styles.logo}
+          className={styles.image}
           src="/assets/images/meat.jpeg"
           alt="Fresh vegetables"
           width={350}
@@ -54,7 +54,7 @@ export default function Meat() {
         />
       </div>
       {CategoryList()}
-      <Button variant="outlined"><a href='/'>Go Back</a></Button>
+      <Button variant="outlined"><a href='/' className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go Back</a></Button>
     </main>
   );
 }
