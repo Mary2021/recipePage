@@ -31,3 +31,11 @@
 .listElementPadding {
     padding: 0.2rem;
 }
+
+.mobileBackground {
+    background-color: hsl(0, 0%, 100%);
+}
+
+.mobileContentPadding {
+    padding: 1rem;
+}

@@ -25,7 +25,7 @@ export default function MeatMeal({ params }: { params: { categoryName: string, m
 
   if (isLoading) return <p>Loading...</p>
   if (!meals) return <p>No profile data</p>
-  
+
   const RecipePaper = () => {
     let obj = Object.entries(meals)[0]
     let mealThumb = ''
@@ -56,48 +56,87 @@ export default function MeatMeal({ params }: { params: { categoryName: string, m
         }
       }
     }
-    return (
-      <Box
-        sx={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          '& > :not(style)': {
-            m: 1,
-            width: 500,
-            borderRadius: 5,
-          },
-        }}
-      >
-        <Paper className={styles.paper} elevation={3}>
+    if (screen.width > 525) {
+      return (
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            '& > :not(style)': {
+              m: 1,
+              width: 500,
+              borderRadius: 5,
+            },
+          }}
+        >
+          <Paper className={styles.paper} elevation={3}>
+            <img
+              className={styles.image}
+              src={mealThumb}
+              alt={params.mealName}
+              width={'100%'}
+              height={'250rem'}
+            ></img>
+            <h1 className={young_serif.className}>{params.mealName}</h1>
+            <h2 className={young_serif.className} style={{ color: 'hsl(14, 45%, 36%)' }}>Ingredients</h2>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={12}>
+                <List>
+                  {ingredients}
+                </List>
+              </Grid>
+            </Grid>
+            <Divider />
+            <h2 className={young_serif.className} style={{ color: 'hsl(14, 45%, 36%)' }}>Instructions</h2>
+            <p className={outfit.className} style={{ textAlign: 'justify', paddingTop: '0.5rem', paddingBottom: '1rem' }}>{instructions}</p>
+            <div className={styles.bntCenter}>
+              <Button variant="outlined"><a href={link} className={young_serif.className} style={{ color: 'hsl(332, 51%, 32%)' }}>Go back</a></Button>
+            </div>
+          </Paper>
+        </Box>
+      )
+    } else {
+      return (
+        <div>
           <img
-            className={styles.image}
             src={mealThumb}
             alt={params.mealName}
             width={'100%'}
             height={'250rem'}
           ></img>
-          <h1 className={young_serif.className}>{params.mealName}</h1>
-          <h2 className={young_serif.className} style={{ color: 'hsl(14, 45%, 36%)' }}>Ingredients</h2>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={12}>
-              <List>
-                {ingredients}
-              </List>
+          <div className={styles.mobileContentPadding}>
+            <h1 className={young_serif.className}>{params.mealName}</h1>
+            <h2 className={young_serif.className} style={{ color: 'hsl(14, 45%, 36%)' }}>Ingredients</h2>
+            <Grid container spacing={2}>
+              <Grid item xs={12} md={12}>
+                <List>
+                  {ingredients}
+                </List>
+              </Grid>
             </Grid>
-          </Grid>
-          <Divider />
-          <h2 className={young_serif.className} style={{ color: 'hsl(14, 45%, 36%)' }}>Instructions</h2>
-          <p className={outfit.className} style={{ textAlign: 'justify', paddingTop: '0.5rem', paddingBottom: '1rem' }}>{instructions}</p>
-          <div className={styles.bntCenter}>
-            <Button variant="outlined"><a href={link} className={young_serif.className} style={{ color: 'hsl(332, 51%, 32%)' }}>Go back</a></Button>
+            <Divider />
+            <h2 className={young_serif.className} style={{ color: 'hsl(14, 45%, 36%)' }}>Instructions</h2>
+            <p className={outfit.className} style={{ textAlign: 'justify', paddingTop: '0.5rem', paddingBottom: '1rem' }}>{instructions}</p>
+            <div className={styles.bntCenter}>
+              <Button variant="outlined"><a href={link} className={young_serif.className} style={{ color: 'hsl(332, 51%, 32%)' }}>Go back</a></Button>
+            </div>
           </div>
-        </Paper>
-      </Box>
-    );
+        </div>
+      )
+    }
+
   }
-  return (
-    <div className={styles.center}>
-      {RecipePaper()}
-    </div>
-  )
+  if (screen.width > 525) {
+    return (
+      <div className={styles.center}>
+        {RecipePaper()}
+      </div>
+    )
+  } else {
+    return (
+      <div className={styles.mobileBackground}>
+        {RecipePaper()}
+      </div>
+    )
+  }
 }
