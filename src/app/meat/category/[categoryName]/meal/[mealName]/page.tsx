@@ -9,10 +9,30 @@ import { Circle } from '@mui/icons-material';
 
 const outfit = Outfit({ subsets: ["latin"] });
 
+const useWidth = () => {
+  const [width, setWidth] = useState(0)
+  const handleResize = () => setWidth(window.innerWidth)
+  useEffect(() => {
+    //set properly on the first load (before resizing)
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+    // the next line for linters, so they won't give a warning
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+  return width
+}
+
 export default function MeatMeal({ params }: { params: { categoryName: string, mealName: string } }) {
+  const [width, setWidth] = useState(0);
+  const windowWidth = useWidth();
   const [meals, setMeals] = useState({})
   const [isLoading, setLoading] = useState(true)
   let link = '/meat/category/' + params.categoryName
+
+  useEffect(() => {
+    setWidth(windowWidth);
+  }, []);
 
   useEffect(() => {
     fetch(`https://www.themealdb.com/api/json/v1/1/search.php?s=${params.mealName}`)
@@ -49,14 +69,14 @@ export default function MeatMeal({ params }: { params: { categoryName: string, m
           let ingredient = obj3[str1]
           let str2 = 'strMeasure' + i.toString()
           let measure = obj3[str2]
-          if (ingredient !== '') {
+          if (ingredient !== '' && ingredient !== null) {
             let element = <ListItem disablePadding key={str1} className={outfit.className}><ListItemIcon><Circle /></ListItemIcon>{measure} {ingredient}</ListItem>
             ingredients.push(element)
           }
         }
       }
     }
-    if (screen.width > 525) {
+    if (window.innerWidth > 525) {
       return (
         <Box
           sx={{
@@ -126,7 +146,7 @@ export default function MeatMeal({ params }: { params: { categoryName: string, m
     }
 
   }
-  if (screen.width > 525) {
+  if (window.innerWidth > 525) {
     return (
       <div className={styles.center}>
         {RecipePaper()}
