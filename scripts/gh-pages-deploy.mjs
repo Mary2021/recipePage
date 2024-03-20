@@ -1,5 +1,5 @@
 import {execa} from "execa";
-const fs = require("fs");
+import * as fs from 'fs';
 
 (async () => {
     try {
