@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  basePath: "/recipePage",
   output: 'export',
   images: {
     remotePatterns: [
