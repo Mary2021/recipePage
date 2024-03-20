@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
+  output: 'export',
+  images: {
     remotePatterns: [
       {
         protocol: 'https',
@@ -9,6 +10,7 @@ const nextConfig = {
         //pathname: '/images/category/**',
       },
     ],
-  },};
+  },
+};
 
 export default nextConfig;
