@@ -47,7 +47,7 @@ export default function Meat() {
         <Image
           className={styles.image}
           src="/assets/images/meat.jpeg"
-          alt="Fresh vegetables"
+          alt="Meat"
           width={350}
           height={200}
           priority
