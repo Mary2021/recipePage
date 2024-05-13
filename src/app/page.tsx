@@ -21,7 +21,7 @@ export default function Home() {
     let i: number
     let lng = categories.length
     for (i = 0; i < lng; ++i) {
-      let route = categories[i].label === 'Meat' ? '/recipePage/meat/' : '/recipePage/category/' + categories[i].label
+      let route = categories[i].label === 'Meat' ? '/recipePage/meat' : '/recipePage/category/' + categories[i].label
       let element = (
         <a
           key={i}
