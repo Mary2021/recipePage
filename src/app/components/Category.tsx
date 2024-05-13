@@ -15,7 +15,6 @@ export default function Category({ params }: { params: { categoryName: string }}
       .then((res) => res.json())
       .then((meals) => {
         setMeals(meals)
-        //console.log(meals)
         setLoading(false)
       })
   }, [])
