@@ -20,8 +20,8 @@ This is a solution to the [Recipe page form challenge on Frontend Mentor](https:
 
 Users could:
 
-- see recipe lists on different categories
-- look up selected recipe detiles
+- See recipe lists on different categories
+- Look up selected recipe details
 - Go back to a previous step
 - View the optimal layout for the interface depending on their device's screen size
 
@@ -33,16 +33,17 @@ Users could:
 
 ### Links
 
-- [Github repo](https://github.com:Mary2021/recipePage.git)
 - [Live URL](https://mary2021.github.io/recipePage/)
 
 ## My process
 
 ### Built with
 
-- This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+- [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 - [Material UI](https://mui.com/material-ui/)
+
+- Recipes fetched from [TheMealDB API](https://www.themealdb.com/)
 
 ## Getting Started
 
