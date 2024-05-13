@@ -21,7 +21,7 @@ export default function Home() {
     let i: number
     let lng = categories.length
     for (i = 0; i < lng; ++i) {
-      let route = categories[i].label === 'Meat' ? '/meat/' : '/category/' + categories[i].label
+      let route = categories[i].label === 'Meat' ? '/recipePage/meat/' : '/recipePage/category/' + categories[i].label
       let element = (
         <a
           key={i}
@@ -50,7 +50,7 @@ export default function Home() {
       <div className={styles.center}>
         <Image
           className={styles.image}
-          src="/assets/images/cookbook.jpg"
+          src="/recipePage/assets/images/cookbook.jpg"
           alt="Fresh vegetables"
           width={350}
           height={200}

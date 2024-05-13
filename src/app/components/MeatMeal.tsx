@@ -28,7 +28,7 @@ export default function MeatMeal({ params }: { params: { categoryName: string, m
   const windowWidth = useWidth();
   const [meals, setMeals] = useState({})
   const [isLoading, setLoading] = useState(true)
-  let link = '/meat/category/' + params.categoryName
+  let link = '/recipePage/meat/category/' + params.categoryName
 
   useEffect(() => {
     setWidth(windowWidth);

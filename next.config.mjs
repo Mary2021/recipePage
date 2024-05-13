@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    basePath: "/recipePage",
+    basePath: '/recipePage',
     output: "export",
     images: { unoptimized: true }
 };

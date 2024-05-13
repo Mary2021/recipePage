@@ -14,7 +14,7 @@ export default function Meat() {
   ]
 
   const CategoryList = () => {
-    let path = '/meat/category/'
+    let path = '/recipePage/meat/category/'
     let elements = []
     let i: number
     let lng = categories.length
@@ -46,7 +46,7 @@ export default function Meat() {
       <div className={styles.center}>
         <Image
           className={styles.image}
-          src="/assets/images/meat.jpeg"
+          src="/recipePage/assets/images/meat.jpeg"
           alt="Meat"
           width={350}
           height={200}
@@ -54,7 +54,7 @@ export default function Meat() {
         />
       </div>
       {CategoryList()}
-      <Button variant="outlined"><a href='/' className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go Back</a></Button>
+      <Button variant="outlined"><a href='/recipePage/' className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go Back</a></Button>
     </main>
   );
 }

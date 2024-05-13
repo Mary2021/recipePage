@@ -50,7 +50,7 @@ export default function MeatCategory({ params }: { params: { categoryName: strin
       for (i = 0; i < lng; ++i) {
         obj3 = Object.values(key1 || {})[i]
         val = obj3['strMeal']
-        let link = '/meat/category/' + params.categoryName + '/meal/' + val.replace(/ /g,'_')
+        let link = '/recipePage/meat/category/' + params.categoryName + '/meal/' + val.replace(/ /g,'_')
         let element = <div key={i} className={styles.listElementPadding}><a href={link}><li >{val}</li></a></div>
         elements.push(element)
       }
@@ -69,7 +69,7 @@ export default function MeatCategory({ params }: { params: { categoryName: strin
       </div>
       <h1 className={young_serif.className}>{params.categoryName}</h1>
       {MealsList()}
-      <Button variant="outlined"><a href='/meat/' className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go Back</a></Button>
+      <Button variant="outlined"><a href='/recipePage/meat/' className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go Back</a></Button>
     </main>
   )
 }

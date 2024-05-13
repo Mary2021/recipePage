@@ -28,7 +28,7 @@ export default function Meal({ params }: { params: { categoryName: string, mealN
   const windowWidth = useWidth();
   const [meals, setMeals] = useState({})
   const [isLoading, setLoading] = useState(true)
-  let link = '/category/' + params.categoryName
+  let link = '/recipePage/category/' + params.categoryName
 
   useEffect(() => {
     setWidth(windowWidth);
