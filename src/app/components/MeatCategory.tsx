@@ -69,7 +69,7 @@ export default function MeatCategory({ params }: { params: { categoryName: strin
       </div>
       <h1 className={young_serif.className}>{params.categoryName}</h1>
       {MealsList()}
-      <Button variant="outlined"><a href='/recipePage/meat/' className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go Back</a></Button>
+      <Button variant="outlined"><a href='/recipePage/meat' className={young_serif.className} style={{color: 'hsl(332, 51%, 32%)'}}>Go Back</a></Button>
     </main>
   )
 }
