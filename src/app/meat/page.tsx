@@ -36,7 +36,7 @@ export default function Meat() {
       elements.push(element)
     }
     return (
-      <div className={styles.grid}>
+      <div className={styles.grid} style={{marginBottom: '2%'}}>
         {elements}
       </div>
     )
